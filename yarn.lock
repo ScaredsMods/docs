@@ -908,7 +908,7 @@ astro-expressive-code@^0.41.1:
   dependencies:
     rehype-expressive-code "^0.41.3"
 
-astro@^5.6.1:
+astro@^5.16.4:
   version "5.16.4"
   resolved "https://registry.yarnpkg.com/astro/-/astro-5.16.4.tgz#203eff42bb860a7ba3f3e68c23930ec4a39d2a2a"
   integrity sha512-rgXI/8/tnO3Y9tfAaUyg/8beKhlIMltbiC8Q6jCoAfEidOyaue4KYKzbe0gJIb6qEdEaG3Kf3BY3EOSLkbWOLg==
