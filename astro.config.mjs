@@ -4,10 +4,15 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+
+	site: "https://scaredsmods.github.io",
+	base: "/docs",
+	trailingSlash: "always",
+
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'ScaredsMods | Documentation ',
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/ScaredsMods/docs' }],
 			sidebar: [
 				{
 					label: 'Guides',
