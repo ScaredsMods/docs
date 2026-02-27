@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeNova from 'starlight-theme-nova'
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,21 +12,27 @@ export default defineConfig({
 
 	integrations: [
 		starlight({
-			title: 'ScaredsMods | Documentation ',
+			plugins: [starlightThemeNova()],
+			title: 'ScaredsMods Developer Documentation',
+			favicon: './src/assets/favicon.ico',
+			logo: {
+				light: './src/assets/light-logo.png',
+				dark: './src/assets/dark-logo.png'
+			},
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/ScaredsMods/docs' }],
 			sidebar: [
 				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
+					label: 'Developer Documentation',
+					autogenerate: { directory: 'mods' }
 				},
 				{
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
 				},
 			],
+			customCss: [
+				'./src/styles/custom.css'
+			]
 		}),
 	],
 });

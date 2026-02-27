@@ -1,27 +1,30 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Home
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  title: Stuck when using my mods? No more!
+  tagline: Here you'll find documentation on how to use my library projects. Looking for guides on how to use content mods? Go to the wiki!
   image:
     file: ../../assets/houston.webp
   actions:
-    - text: Example Guide
-      link: /docs/guides/example/
+    - text: Mods
+      link: mods/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+    - text: Plugins
+      link: plugins/
+      icon: right-arrow
 ---
+import { Aside, Card, CardGrid } from '@astrojs/starlight/components';
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+## This website
+I named my gamertag, ScaredRabbit(NL), after my rabbit Bikkel. He was a rabbit who was quite scared, although thats common for rabbits. I thought it was really resembling me as a person because I myself are often scared. Unfortunately, he died in august of 2025 having lived for over 6 years. I have decided to dedicate this website to him. R.I.P. Bikkel, May 2019 - August 2025.
 
-## Next steps
+![Remembrance](../../assets/remembrance.png)
+
+## Mods
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
+	<Card title="Update content" icon="jetbrains">
 		Edit `src/content/docs/index.mdx` to see this page change.
 	</Card>
 	<Card title="Change page layout" icon="document">
@@ -37,4 +40,12 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 	<Card title="Read the docs" icon="open-book">
 		Learn more in [the Starlight Docs](https://starlight.astro.build/).
 	</Card>
+</CardGrid>
+
+
+## (Legacy) Plugins
+<Aside type="caution">I no longer work on plugins. All plugins below are legacy, and are no longer being updated!</Aside>
+
+<CardGrid stagger>
+	<Card title="SubCommandLib" icon="setting">A plugin for easily making subcommands. Made for 1.20.1</Card>
 </CardGrid>

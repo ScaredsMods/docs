@@ -11,9 +11,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.37.0",
-    "astro": "^5.16.4",
-    "sharp": "^0.34.2"
+    "@astrojs/starlight": "0.37.6",
+    "@fontsource/geist-mono": "^5.2.7",
+    "@fontsource/geist-sans": "^5.2.5",
+    "astro": "5.18.0",
+    "sharp": "^0.34.2",
+    "starlight-ion-theme": "^2.3.3",
+    "starlight-site-graph": "^0.5.0",
+    "starlight-theme-black": "^0.6.0",
+    "starlight-theme-nova": "^0.11.5",
+    "starlight-theme-obsidian": "^0.4.1",
+    "typescript": "^5.9.3"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
