@@ -14,7 +14,7 @@ export default defineConfig({
 		starlight({
 			plugins: [starlightThemeNova()],
 			title: 'ScaredsMods Developer Documentation',
-			favicon: './public/favicon.ico',
+			favicon: './favicon.svg',
 			logo: {
 				light: './src/assets/light-logo.png',
 				dark: './src/assets/dark-logo.png'
