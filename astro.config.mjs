@@ -22,12 +22,25 @@ export default defineConfig({
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/ScaredsMods/docs' }],
 			sidebar: [
 				{
-					label: 'Developer Documentation',
-					autogenerate: { directory: 'mods' }
+  					label: 'Mods',
+  					items: [
+						'mods',
+  					    { label: 'MoreOutputsAPI', autogenerate: { directory: 'mods/moapi' } },
+  					],
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+  					label: 'Plugins',
+  					items: [
+					   'plugins',
+  					   { label: 'SubCommandLib', autogenerate: { directory: 'plugins/scl' } },
+  					],
+				},
+				{
+  					label: 'Reference',
+  					items: [
+						{ label: 'Mods', autogenerate: { directory: 'reference/mods' } },
+  					    { label: 'Plugins', autogenerate: { directory: 'reference/plugins' } },
+  					],
 				},
 			],
 			customCss: [
