@@ -1,14 +1,26 @@
 name: generate-javadoc
 
 on:
-  # Trigger when a new release is published in the mod repo
-  repository_dispatch:
-    types: [mod-released]
   workflow_dispatch:
+    inputs:
+      mod:
+        description: "Which mod to update (empty = all)"
+        required: false
+  schedule:
+    - cron: '0 6 * * 1'  # weekly
 
 jobs:
   javadoc:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Define your mods here — repo + the package to extract
+        mod:
+          - repo: "ScaredsMods/PotionTotems"
+            slug: "potion_totems"
+          - repo: "ScaredsMods/ScaredsFactions"
+            slug: "scareds_factions"
+
     steps:
       - uses: actions/checkout@v4
 
@@ -17,44 +29,29 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      # --- Option A: download from Modrinth ---
-      - name: Get sources jar from Modrinth
-        id: modrinth
+      - name: Find javadoc jar in latest release
+        id: find
         run: |
-          # Get latest version
-          VERSION=$(curl -s "https://api.modrinth.com/v2/project/YOUR_PROJECT_ID/version" \
-            | jq -r '.[0].version_number')
-          # Get the sources jar URL
-          URL=$(curl -s "https://api.modrinth.com/v2/project/YOUR_PROJECT_ID/version/$VERSION" \
-            | jq -r '.files[] | select(.file_type=="sources-jar") | .url')
+          URL=$(curl -s "https://api.github.com/repos/${{ matrix.mod.repo }}/releases/latest" \
+            | jq -r '.assets[] | select(.name | endswith("-javadoc.jar")) | .browser_download_url')
+          if [ -z "$URL" ] || [ "$URL" = "null" ]; then
+            echo "no-javadoc=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
       - name: Download & extract
+        if: steps.find.outputs.no-javadoc != 'true'
         run: |
-          curl -L -o sources.jar "${{ steps.modrinth.outputs.url }}"
-          mkdir -p sources
-          jar xf sources.jar -C sources
-
-      # --- Option B: download from GitHub Releases instead ---
-      # - name: Download from GitHub Releases
-      #   run: |
-      #     LATEST=$(curl -s https://api.github.com/repos/OWNER/REPO/releases/latest \
-      #       | jq -r '.assets[] | select(.name | endswith("-sources.jar")) | .browser_download_url')
-      #     curl -L -o sources.jar "$LATEST"
-      #     mkdir -p sources && jar xf sources.jar -C sources
-
-      - name: Generate Javadoc
-        run: |
-          javadoc -d public/javadoc \
-            -sourcepath sources \
-            -subpackages com.yourpackage \
-            -classpath "libs/your-dependencies.jar" \
-            -quiet
+          curl -sL -o javadoc.jar "${{ steps.find.outputs.url }}"
+          mkdir -p "public/${{ matrix.mod.slug }}/javadoc"
+          jar xf javadoc.jar -C "public/${{ matrix.mod.slug }}/javadoc"
 
       - name: Commit
+        if: steps.find.outputs.no-javadoc != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/javadoc
-          git diff --cached --quiet || git commit -m "Update Javadoc"
+          git add "public/${{ matrix.mod.slug }}/javadoc"
+          git diff --cached --quiet || git commit -m "Update ${MOD} javadoc"
           git push   
