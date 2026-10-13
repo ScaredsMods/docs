@@ -45,7 +45,7 @@ jobs:
         run: |
           curl -sL -o javadoc.jar "${{ steps.find.outputs.url }}"
           mkdir -p "public/${{ matrix.mod.slug }}/javadoc"
-          jar xf javadoc.jar -C "public/${{ matrix.mod.slug }}/javadoc"
+          unzip -q javadoc.jar -d "public/${{ matrix.mod.slug }}/javadoc"
 
       - name: Commit
         if: steps.find.outputs.no-javadoc != 'true'
