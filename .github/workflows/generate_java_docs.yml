@@ -51,7 +51,7 @@ jobs:
       - name: Convert javadoc to markdown
         if: steps.find.outputs.no-javadoc != 'true'
         run: |
-          npx doctomd --input "public/${{ matrix.mod.slug }}/javadoc" --output "src/content/docs/api/${{ matrix.mod.slug }}" --module code
+          npx doctomd --input "public/${{ matrix.mod.slug }}/javadoc" --output "src/content/docs/api/mods/${{ matrix.mod.slug }}" --module code
           rm -rf "public/${{ matrix.mod.slug }}/javadoc"
 
       - name: Commit
@@ -59,6 +59,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "src/content/docs/api/${{ matrix.mod.slug }}"
+          git add "src/content/docs/api/mods/${{ matrix.mod.slug }}"
           git diff --cached --quiet || git commit -m "Update ${{ matrix.mod.slug }} API docs"
           git push 

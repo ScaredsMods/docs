@@ -38,7 +38,7 @@ export default defineConfig({
 				{
   				  label: 'API Reference',
   				  items: [
-  				    { label: 'Potion Totems', link: '/docs/api/potion-totems/overview' },
+  				    { label: 'Potion Totems', link: '/api/mods/potion_totems/' },
   				    { label: "Scared's Factions", link: '/potion_totems/javadoc/' }
   				  ]
   				}
