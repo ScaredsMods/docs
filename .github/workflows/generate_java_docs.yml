@@ -29,16 +29,16 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Find javadoc jar in latest release
+      - name: Find javadoc jar
         id: find
         run: |
-          URL=$(curl -s "https://api.github.com/repos/${{ matrix.mod.repo }}/releases/latest" \
-            | jq -r '.assets[] | select(.name | endswith("-javadoc.jar")) | .browser_download_url')
+          URL=$(curl -s "https://api.github.com/repos/${{ matrix.mod.repo }}/releases?per_page=5" \
+            | jq -r '.[] | .assets[] | select(.name | endswith("-javadoc.jar")) | .browser_download_url' | head -1)
           if [ -z "$URL" ] || [ "$URL" = "null" ]; then
             echo "no-javadoc=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"   
 
       - name: Download & extract
         if: steps.find.outputs.no-javadoc != 'true'
