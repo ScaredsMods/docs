@@ -51,7 +51,7 @@ jobs:
       - name: Convert javadoc to markdown
         if: steps.find.outputs.no-javadoc != 'true'
         run: |
-          npx doctomd "public/${{ matrix.mod.slug }}/javadoc" --output "src/content/docs/api/${{ matrix.mod.slug }}"
+          npx doctomd --input "public/${{ matrix.mod.slug }}/javadoc" --output "src/content/docs/api/${{ matrix.mod.slug }}"
           rm -rf "public/${{ matrix.mod.slug }}/javadoc"
 
       - name: Commit
