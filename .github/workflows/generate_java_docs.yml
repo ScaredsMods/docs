@@ -51,10 +51,8 @@ jobs:
       - name: Convert javadoc to markdown
         if: steps.find.outputs.no-javadoc != 'true'
         run: |
-         # Install nyandoc (Scala-based javadoc→markdown converter)
-         curl -Lo nyandoc.jar https://github.com/todesking/nyandoc/releases/latest/download/nyandoc.jar
-         java -jar nyandoc.jar "public/${{ matrix.mod.slug }}/javadoc" "src/content/docs/api/${{ matrix.mod.slug }}"
-         rm -rf "public/${{ matrix.mod.slug }}/javadoc"   
+          npx doctomd "public/${{ matrix.mod.slug }}/javadoc" --output "src/content/docs/api/${{ matrix.mod.slug }}"
+          rm -rf "public/${{ matrix.mod.slug }}/javadoc"
 
       - name: Commit
         if: steps.find.outputs.no-javadoc != 'true'
