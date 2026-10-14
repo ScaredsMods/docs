@@ -47,16 +47,6 @@ jobs:
           curl -sL -o javadoc.jar "${{ steps.find.outputs.url }}"
           mkdir -p "public/${{ matrix.mod.slug }}/javadoc"
           unzip -q -o javadoc.jar -d "public/${{ matrix.mod.slug }}/javadoc"
-          
-      - name: Convert javadoc to markdown
-        if: steps.find.outputs.no-javadoc != 'true'
-        run: |
-          npx doctomd --input "public/${{ matrix.mod.slug }}/javadoc" --output "src/content/docs/api/mods/${{ matrix.mod.slug }}" --module code
-          echo "--- Files created ---"
-          find src/content/docs/api/mods -type f 2>/dev/null || echo "Directory does not exist"
-          find . -name "*.md" -newer javadoc.jar -not -path "./node_modules/*" 2>/dev/null | head -30
-          echo "--- End ---"
-          # rm -rf "public/${{ matrix.mod.slug }}/javadoc"  # comment out for now   
      
       - name: Commit
         if: steps.find.outputs.no-javadoc != 'true'
