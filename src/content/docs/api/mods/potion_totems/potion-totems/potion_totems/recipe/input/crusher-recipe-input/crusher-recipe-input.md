@@ -1,6 +1,0 @@
----
-title: "CrusherRecipeInput"
----
-
-[java]\
-constructor()

@@ -1,6 +1,0 @@
----
-title: "InfuserRenderState"
----
-
-[java]\
-constructor()

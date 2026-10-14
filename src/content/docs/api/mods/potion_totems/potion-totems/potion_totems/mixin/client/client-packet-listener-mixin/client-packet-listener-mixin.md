@@ -1,6 +1,0 @@
----
-title: "ClientPacketListenerMixin"
----
-
-[java]\
-constructor()

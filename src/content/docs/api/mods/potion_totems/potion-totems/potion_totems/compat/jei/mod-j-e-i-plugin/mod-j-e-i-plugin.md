@@ -1,6 +1,0 @@
----
-title: "ModJEIPlugin"
----
-
-[java]\
-constructor()

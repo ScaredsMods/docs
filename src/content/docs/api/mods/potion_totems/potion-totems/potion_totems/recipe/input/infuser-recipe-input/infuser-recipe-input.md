@@ -1,6 +1,0 @@
----
-title: "InfuserRecipeInput"
----
-
-[java]\
-constructor()

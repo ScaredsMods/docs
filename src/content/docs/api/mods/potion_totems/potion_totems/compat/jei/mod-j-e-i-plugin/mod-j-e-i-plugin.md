@@ -1,0 +1,7 @@
+---
+title: "ModJEIPlugin"
+---
+
+```kotlin
+constructor()
+```

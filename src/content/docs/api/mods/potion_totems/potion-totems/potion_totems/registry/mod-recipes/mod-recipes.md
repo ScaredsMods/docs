@@ -1,6 +1,0 @@
----
-title: "ModRecipes"
----
-
-[java]\
-constructor()

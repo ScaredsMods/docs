@@ -1,0 +1,7 @@
+---
+title: "Trades"
+---
+
+```kotlin
+constructor()
+```

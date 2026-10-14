@@ -1,0 +1,7 @@
+---
+title: "ModJEIRecipeTypes"
+---
+
+```kotlin
+constructor()
+```

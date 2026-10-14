@@ -1,6 +1,0 @@
----
-title: "Potions"
----
-
-[java]\
-constructor()

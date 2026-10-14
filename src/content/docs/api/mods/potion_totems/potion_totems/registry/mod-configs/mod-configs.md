@@ -1,0 +1,7 @@
+---
+title: "ModConfigs"
+---
+
+```kotlin
+constructor()
+```

@@ -1,6 +1,0 @@
----
-title: "AdvancedInfuserRecipeInput"
----
-
-[java]\
-constructor()

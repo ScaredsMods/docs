@@ -1,6 +1,0 @@
----
-title: "onDataPacket"
----
-
-[java]\
-open fun [onDataPacket](/docs/api/mods/potion_totems/potion-totems/potion_totems/block/entity/advanced-infuser-block-entity/on-data-packet/)(net: Connection, valueInput: ValueInput)

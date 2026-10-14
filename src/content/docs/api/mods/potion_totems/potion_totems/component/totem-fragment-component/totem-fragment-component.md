@@ -1,0 +1,7 @@
+---
+title: "TotemFragmentComponent"
+---
+
+```kotlin
+constructor()
+```

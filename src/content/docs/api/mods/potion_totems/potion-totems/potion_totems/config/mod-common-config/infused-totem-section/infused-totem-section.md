@@ -1,6 +1,0 @@
----
-title: "InfusedTotemSection"
----
-
-[java]\
-constructor()

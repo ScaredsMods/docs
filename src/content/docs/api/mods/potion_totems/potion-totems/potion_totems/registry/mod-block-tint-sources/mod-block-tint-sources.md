@@ -1,6 +1,0 @@
----
-title: "ModBlockTintSources"
----
-
-[java]\
-constructor()

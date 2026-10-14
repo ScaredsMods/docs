@@ -1,6 +1,0 @@
----
-title: "DevSection"
----
-
-[java]\
-constructor()

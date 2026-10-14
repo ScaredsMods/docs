@@ -1,0 +1,7 @@
+---
+title: "ModMenuTypes"
+---
+
+```kotlin
+constructor()
+```

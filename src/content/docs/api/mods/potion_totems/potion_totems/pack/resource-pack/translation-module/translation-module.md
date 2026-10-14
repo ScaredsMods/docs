@@ -1,0 +1,7 @@
+---
+title: "TranslationModule"
+---
+
+```kotlin
+constructor()
+```

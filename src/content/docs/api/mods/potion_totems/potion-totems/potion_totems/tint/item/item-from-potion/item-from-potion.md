@@ -1,6 +1,0 @@
----
-title: "ItemFromPotion"
----
-
-[java]\
-constructor()

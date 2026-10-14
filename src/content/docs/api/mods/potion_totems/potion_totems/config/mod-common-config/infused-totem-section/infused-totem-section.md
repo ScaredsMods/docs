@@ -1,0 +1,7 @@
+---
+title: "InfusedTotemSection"
+---
+
+```kotlin
+constructor()
+```

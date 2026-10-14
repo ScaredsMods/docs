@@ -1,6 +1,0 @@
----
-title: "CrusherRecipe"
----
-
-[java]\
-constructor()

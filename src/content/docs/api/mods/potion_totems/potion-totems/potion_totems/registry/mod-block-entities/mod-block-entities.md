@@ -1,6 +1,0 @@
----
-title: "ModBlockEntities"
----
-
-[java]\
-constructor()

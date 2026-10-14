@@ -1,0 +1,7 @@
+---
+title: "ServerRecipeSync"
+---
+
+```kotlin
+constructor()
+```

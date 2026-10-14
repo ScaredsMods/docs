@@ -1,6 +1,0 @@
----
-title: "DataGenerators"
----
-
-[java]\
-constructor()

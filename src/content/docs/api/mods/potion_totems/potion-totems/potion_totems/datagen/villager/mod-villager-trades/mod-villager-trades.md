@@ -1,6 +1,0 @@
----
-title: "ModVillagerTrades"
----
-
-[java]\
-constructor()

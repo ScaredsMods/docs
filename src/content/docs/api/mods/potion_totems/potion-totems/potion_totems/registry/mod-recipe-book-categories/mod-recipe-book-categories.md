@@ -1,6 +1,0 @@
----
-title: "ModRecipeBookCategories"
----
-
-[java]\
-constructor()

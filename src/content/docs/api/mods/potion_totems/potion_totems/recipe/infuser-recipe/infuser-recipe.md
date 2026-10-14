@@ -1,0 +1,7 @@
+---
+title: "InfuserRecipe"
+---
+
+```kotlin
+constructor()
+```

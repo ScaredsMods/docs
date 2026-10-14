@@ -1,0 +1,7 @@
+---
+title: "AdvancedInfuserRecipeInput"
+---
+
+```kotlin
+constructor()
+```

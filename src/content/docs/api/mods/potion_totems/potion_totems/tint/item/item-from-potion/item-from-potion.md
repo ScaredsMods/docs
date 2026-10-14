@@ -1,0 +1,7 @@
+---
+title: "ItemFromPotion"
+---
+
+```kotlin
+constructor()
+```

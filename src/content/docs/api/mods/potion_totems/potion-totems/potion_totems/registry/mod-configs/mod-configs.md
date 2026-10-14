@@ -1,6 +1,0 @@
----
-title: "ModConfigs"
----
-
-[java]\
-constructor()

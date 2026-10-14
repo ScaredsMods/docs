@@ -1,6 +1,0 @@
----
-title: "ModItems"
----
-
-[java]\
-constructor()

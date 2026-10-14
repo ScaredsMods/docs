@@ -1,0 +1,7 @@
+---
+title: "ModRecipes"
+---
+
+```kotlin
+constructor()
+```

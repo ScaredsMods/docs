@@ -1,6 +1,0 @@
----
-title: "ModBlocks"
----
-
-[java]\
-constructor()

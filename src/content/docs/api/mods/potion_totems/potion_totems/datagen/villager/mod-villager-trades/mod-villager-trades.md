@@ -1,0 +1,7 @@
+---
+title: "ModVillagerTrades"
+---
+
+```kotlin
+constructor()
+```

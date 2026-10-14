@@ -1,0 +1,7 @@
+---
+title: "PotionUtils"
+---
+
+```kotlin
+constructor()
+```

@@ -1,0 +1,7 @@
+---
+title: "CrusherRecipeInput"
+---
+
+```kotlin
+constructor()
+```

@@ -1,6 +1,0 @@
----
-title: "ModGameEvents"
----
-
-[java]\
-constructor()

@@ -1,0 +1,7 @@
+---
+title: "ModRecipeBookCategories"
+---
+
+```kotlin
+constructor()
+```

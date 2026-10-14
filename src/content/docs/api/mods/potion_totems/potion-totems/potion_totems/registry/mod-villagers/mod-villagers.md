@@ -1,6 +1,0 @@
----
-title: "ModVillagers"
----
-
-[java]\
-constructor()

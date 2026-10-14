@@ -1,6 +1,0 @@
----
-title: "ServerRecipeSync"
----
-
-[java]\
-constructor()

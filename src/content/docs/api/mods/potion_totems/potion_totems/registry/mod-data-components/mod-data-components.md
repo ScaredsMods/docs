@@ -1,0 +1,7 @@
+---
+title: "ModDataComponents"
+---
+
+```kotlin
+constructor()
+```
