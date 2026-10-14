@@ -3,5 +3,5 @@ title: "packFormat"
 ---
 
 ```kotlin
-val packFormat: Array<Int>
+val packFormat: PackFormat.IntermediaryFormat
 ```
