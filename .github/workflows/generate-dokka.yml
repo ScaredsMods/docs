@@ -1,7 +1,9 @@
 name: generate-dokka
 
+# Setting any permission resets the rest to "none", so list everything needed.
 permissions:
-  contents: write
+  contents: write   # commit the generated docs
+  actions: write    # dispatch build.yml
 
 on:
   workflow_dispatch:
@@ -12,6 +14,8 @@ jobs:
   dokka:
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1   # both jobs push to main, so run them one after another
+      fail-fast: false
       matrix:
         mod:
           - repo: "ScaredsMods/PotionTotems"
@@ -25,9 +29,10 @@ jobs:
       - name: Find dokka-gfm.zip
         id: find
         run: |
-          URL=$(curl -s "https://api.github.com/repos/${{ matrix.mod.repo }}/releases?per_page=5" \
-            | jq -r '.[] | .assets[] | select(.name == "dokka-gfm.zip") | .browser_download_url' | head -1)
-          if [ -z "$URL" ] || [ "$URL" = "null" ]; then
+          URL=$(curl -sf "https://api.github.com/repos/${{ matrix.mod.repo }}/releases?per_page=5" \
+            | jq -r '[.[] | .assets[] | select(.name == "dokka-gfm.zip") | .browser_download_url] | first // empty')
+          if [ -z "$URL" ]; then
+            echo "No dokka-gfm.zip found for ${{ matrix.mod.repo }}"
             echo "no-dokka=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -36,25 +41,34 @@ jobs:
       - name: Download & extract
         if: steps.find.outputs.no-dokka != 'true'
         run: |
-          curl -sL -o dokka-gfm.zip "${{ steps.find.outputs.url }}"
-          mkdir -p "src/content/docs/api/mods/${{ matrix.mod.slug }}"
-          unzip -q -o dokka-gfm.zip -d "src/content/docs/api/mods/${{ matrix.mod.slug }}"
+          DIR="src/content/docs/api/mods/${{ matrix.mod.slug }}"
+          curl -sfL -o dokka-gfm.zip "${{ steps.find.outputs.url }}"
+          rm -rf "$DIR"
+          mkdir -p "$DIR"
+          unzip -q -o dokka-gfm.zip -d "$DIR"
+          rm dokka-gfm.zip
+          # The site is served under base "/docs" (see astro.config.mjs), so links need that prefix.
+          python3 scripts/fix-dokka.py "$DIR" "/docs/api/mods/${{ matrix.mod.slug }}"
 
       - name: Commit
         if: steps.find.outputs.no-dokka != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "src/content/docs/api/mods/${{ matrix.mod.slug }}"
+          git add -A "src/content/docs/api/mods/${{ matrix.mod.slug }}"
           git diff --cached --quiet || git commit -m "Update ${{ matrix.mod.slug }} API docs"
           git pull --rebase origin main
-          git push   
+          git push
 
+  deploy:
+    # Runs once, after every mod has been processed.
+    needs: dokka
+    runs-on: ubuntu-latest
+    steps:
       - name: Trigger deploy
-        if: steps.find.outputs.no-dokka != 'true'
         run: |
-          curl -s -X POST \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          curl -sf -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${{ github.repository }}/actions/workflows/build.yml/dispatches" \
-            -d '{"ref":"main"}'    
+            -d '{"ref":"main"}'

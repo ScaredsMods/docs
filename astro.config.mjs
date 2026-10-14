@@ -38,8 +38,8 @@ export default defineConfig({
 				{
 				  label: 'API Reference',
 				  items: [
-				    { label: 'Potion Totems', link: '/api/mods/potion_totems/' },
-				    { label: "Scared's Factions", link: '/api/mods/scareds_factions/' },
+				    { label: 'Potion Totems', collapsed: true, autogenerate: { directory: 'api/mods/potion_totems', collapsed: true } },
+				    { label: "Scared's Factions", collapsed: true, autogenerate: { directory: 'api/mods/scareds_factions', collapsed: true } },
 				  ]
 				}
 			],
