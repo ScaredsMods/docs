@@ -53,6 +53,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "src/content/docs/api/mods/${{ matrix.mod.slug }}"
+          git add "public/${{ matrix.mod.slug }}/javadoc"
           git diff --cached --quiet || git commit -m "Update ${{ matrix.mod.slug }} API docs"
           git push 
