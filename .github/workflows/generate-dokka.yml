@@ -48,7 +48,7 @@ jobs:
           unzip -q -o dokka-gfm.zip -d "$DIR"
           rm dokka-gfm.zip
           # The site is served under base "/docs" (see astro.config.mjs), so links need that prefix.
-          python3 scripts/fix_dokka.py "$DIR" "/docs/api/mods/${{ matrix.mod.slug }}"
+          python3 scripts/fix-dokka.py "$DIR" "/docs/api/mods/${{ matrix.mod.slug }}"
 
       - name: Commit
         if: steps.find.outputs.no-dokka != 'true'
