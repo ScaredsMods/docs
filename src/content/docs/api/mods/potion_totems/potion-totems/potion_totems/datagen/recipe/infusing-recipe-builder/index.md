@@ -1,0 +1,28 @@
+---
+title: "InfusingRecipeBuilder"
+sidebar:
+  label: "Overview"
+---
+
+[java]\
+open class [InfusingRecipeBuilder](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/) : RecipeBuilder
+
+## Properties
+
+| Name | Summary |
+|---|---|
+| [ROOT_RECIPE_ADVANCEMENT](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/crusher-recipe-builder/#-1221031921%2FProperties%2F-1170581573) | [java]<br>val [ROOT_RECIPE_ADVANCEMENT](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/crusher-recipe-builder/#-1221031921%2FProperties%2F-1170581573): Identifier |
+
+## Functions
+
+| Name | Summary |
+|---|---|
+| [createCraftingBookInfo](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/crusher-recipe-builder/#615664233%2FFunctions%2F-1170581573) | [java]<br>open fun [createCraftingBookInfo](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/crusher-recipe-builder/#615664233%2FFunctions%2F-1170581573)(category: RecipeCategory, group: @Nullable[String](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html)): CraftingRecipe.CraftingBookInfo |
+| [createCraftingCommonInfo](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/crusher-recipe-builder/#985214802%2FFunctions%2F-1170581573) | [java]<br>open fun [createCraftingCommonInfo](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/crusher-recipe-builder/#985214802%2FFunctions%2F-1170581573)(showNotification: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)): Recipe.CommonInfo |
+| [defaultId](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/default-id/) | [java]<br>open fun [defaultId](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/default-id/)(): ResourceKey&lt;Recipe&lt;out [Any](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html)&gt;&gt; |
+| [determineCraftingBookCategory](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/crusher-recipe-builder/#1971680668%2FFunctions%2F-1170581573) | [java]<br>open fun [determineCraftingBookCategory](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/crusher-recipe-builder/#1971680668%2FFunctions%2F-1170581573)(category: RecipeCategory): CraftingBookCategory |
+| [getDefaultRecipeId](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/crusher-recipe-builder/#-1682859678%2FFunctions%2F-1170581573) | [java]<br>open fun [getDefaultRecipeId](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/crusher-recipe-builder/#-1682859678%2FFunctions%2F-1170581573)(result: ItemInstance): ResourceKey&lt;Recipe&lt;out [Any](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html)&gt;&gt; |
+| [group](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/group/) | [java]<br>open fun [group](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/group/)(@Nullablegroup: @Nullable[String](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html)): RecipeBuilder |
+| [infusing](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/infusing/) | [java]<br>open fun [infusing](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/infusing/)(category: RecipeCategory, inputItem: [List](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/List.html)&lt;Ingredient&gt;, items: [List](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/List.html)&lt;ItemStackTemplate&gt;): [InfusingRecipeBuilder](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/) |
+| [save](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/save/) | [java]<br>open fun [save](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/save/)(output: RecipeOutput, location: ResourceKey&lt;Recipe&lt;out [Any](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html)&gt;&gt;) |
+| [unlockedBy](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/unlocked-by/) | [java]<br>open fun [unlockedBy](/docs/api/mods/potion_totems/potion-totems/potion_totems/datagen/recipe/infusing-recipe-builder/unlocked-by/)(name: [String](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html), criterion: Criterion&lt;out [Any](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html)&gt;): RecipeBuilder |

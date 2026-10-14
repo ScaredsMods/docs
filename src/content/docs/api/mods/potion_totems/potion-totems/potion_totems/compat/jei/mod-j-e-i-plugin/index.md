@@ -1,0 +1,44 @@
+---
+title: "ModJEIPlugin"
+sidebar:
+  label: "Overview"
+---
+
+[java]\
+open class [ModJEIPlugin](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/) : IModPlugin
+
+## Constructors
+
+| | |
+|---|---|
+| [ModJEIPlugin](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/mod-j-e-i-plugin/) | [java]<br>constructor() |
+
+## Types
+
+| Name | Summary |
+|---|---|
+| [ClientRecipeSync](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/client-recipe-sync/) | [java]<br>open class [ClientRecipeSync](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/client-recipe-sync/) |
+| [ServerRecipeSync](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/server-recipe-sync/) | [java]<br>open class [ServerRecipeSync](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/server-recipe-sync/) |
+
+## Functions
+
+| Name | Summary |
+|---|---|
+| [getPluginUid](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/get-plugin-uid/) | [java]<br>open fun [getPluginUid](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/get-plugin-uid/)(): Identifier |
+| [onConfigManagerAvailable](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#1675757216%2FFunctions%2F-1170581573) | [java]<br>open fun [onConfigManagerAvailable](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#1675757216%2FFunctions%2F-1170581573)(configManager: IJeiConfigManager) |
+| [onRuntimeAvailable](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#1905246754%2FFunctions%2F-1170581573) | [java]<br>open fun [onRuntimeAvailable](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#1905246754%2FFunctions%2F-1170581573)(jeiRuntime: IJeiRuntime) |
+| [onRuntimeUnavailable](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#298617294%2FFunctions%2F-1170581573) | [java]<br>open fun [onRuntimeUnavailable](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#298617294%2FFunctions%2F-1170581573)() |
+| [registerAdvanced](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-70739991%2FFunctions%2F-1170581573) | [java]<br>open fun [registerAdvanced](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-70739991%2FFunctions%2F-1170581573)(registration: IAdvancedRegistration) |
+| [registerCategories](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/register-categories/) | [java]<br>open fun [registerCategories](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/register-categories/)(registration: IRecipeCategoryRegistration) |
+| [registerExtraIngredients](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-1559652236%2FFunctions%2F-1170581573) | [java]<br>open fun [registerExtraIngredients](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-1559652236%2FFunctions%2F-1170581573)(registration: IExtraIngredientRegistration) |
+| [registerFluidSubtypes](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#2039427400%2FFunctions%2F-1170581573) | [java]<br>open fun &lt;[T](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#2039427400%2FFunctions%2F-1170581573)&gt; [registerFluidSubtypes](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#2039427400%2FFunctions%2F-1170581573)(registration: ISubtypeRegistration, platformFluidHelper: IPlatformFluidHelper&lt;[T](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#2039427400%2FFunctions%2F-1170581573)&gt;) |
+| [registerGuiHandlers](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/register-gui-handlers/) | [java]<br>open fun [registerGuiHandlers](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/register-gui-handlers/)(registration: IGuiHandlerRegistration) |
+| [registerIngredientAliases](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#1404172113%2FFunctions%2F-1170581573) | [java]<br>open fun [registerIngredientAliases](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#1404172113%2FFunctions%2F-1170581573)(registration: IIngredientAliasRegistration) |
+| [registerIngredients](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-474235160%2FFunctions%2F-1170581573) | [java]<br>open fun [registerIngredients](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-474235160%2FFunctions%2F-1170581573)(registration: IModIngredientRegistration) |
+| [registerItemSubtypes](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-260939583%2FFunctions%2F-1170581573) | [java]<br>open fun [registerItemSubtypes](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-260939583%2FFunctions%2F-1170581573)(registration: ISubtypeRegistration) |
+| [registerModInfo](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#1474465629%2FFunctions%2F-1170581573) | [java]<br>open fun [registerModInfo](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#1474465629%2FFunctions%2F-1170581573)(modAliasRegistration: IModInfoRegistration) |
+| [registerRecipeCatalysts](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/register-recipe-catalysts/) | [java]<br>open fun [registerRecipeCatalysts](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/register-recipe-catalysts/)(registration: IRecipeCatalystRegistration) |
+| [registerRecipes](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/register-recipes/) | [java]<br>open fun [registerRecipes](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/register-recipes/)(registration: IRecipeRegistration) |
+| [registerRecipeTransferHandlers](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#1588503698%2FFunctions%2F-1170581573) | [java]<br>open fun [registerRecipeTransferHandlers](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#1588503698%2FFunctions%2F-1170581573)(registration: IRecipeTransferRegistration) |
+| [registerRuntime](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-1498548403%2FFunctions%2F-1170581573) | [java]<br>open fun [registerRuntime](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-1498548403%2FFunctions%2F-1170581573)(registration: IRuntimeRegistration) |
+| [registerVanillaCategoryExtensions](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-22428742%2FFunctions%2F-1170581573) | [java]<br>open fun [registerVanillaCategoryExtensions](/docs/api/mods/potion_totems/potion-totems/potion_totems/compat/jei/mod-j-e-i-plugin/#-22428742%2FFunctions%2F-1170581573)(registration: IVanillaCategoryExtensionRegistration) |
