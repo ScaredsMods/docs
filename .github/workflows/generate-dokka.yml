@@ -1,0 +1,60 @@
+name: generate-dokka
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'
+
+jobs:
+  dokka:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        mod:
+          - repo: "ScaredsMods/PotionTotems"
+            slug: "potion_totems"
+          - repo: "ScaredsMods/ScaredsFactions"
+            slug: "scareds_factions"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find dokka-gfm.zip
+        id: find
+        run: |
+          URL=$(curl -s "https://api.github.com/repos/${{ matrix.mod.repo }}/releases?per_page=5" \
+            | jq -r '.[] | .assets[] | select(.name == "dokka-gfm.zip") | .browser_download_url' | head -1)
+          if [ -z "$URL" ] || [ "$URL" = "null" ]; then
+            echo "no-dokka=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Download & extract
+        if: steps.find.outputs.no-dokka != 'true'
+        run: |
+          curl -sL -o dokka-gfm.zip "${{ steps.find.outputs.url }}"
+          mkdir -p "src/content/docs/api/mods/${{ matrix.mod.slug }}"
+          unzip -q -o dokka-gfm.zip -d "src/content/docs/api/mods/${{ matrix.mod.slug }}"
+
+      - name: Commit
+        if: steps.find.outputs.no-dokka != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "src/content/docs/api/mods/${{ matrix.mod.slug }}"
+          git diff --cached --quiet || git commit -m "Update ${{ matrix.mod.slug }} API docs"
+          git pull --rebase origin main
+          git push   
+
+      - name: Trigger deploy
+        if: steps.find.outputs.no-dokka != 'true'
+        run: |
+          curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/build.yml/dispatches" \
+            -d '{"ref":"main"}'    
