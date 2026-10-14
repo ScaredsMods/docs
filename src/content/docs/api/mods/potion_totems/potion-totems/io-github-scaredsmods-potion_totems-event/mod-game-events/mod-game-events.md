@@ -1,0 +1,6 @@
+---
+title: "ModGameEvents"
+---
+
+[java]\
+constructor()

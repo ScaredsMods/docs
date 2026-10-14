@@ -1,0 +1,6 @@
+---
+title: "TotemFragmentComponent"
+---
+
+[java]\
+constructor()

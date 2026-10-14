@@ -1,0 +1,6 @@
+---
+title: "TranslationModule"
+---
+
+[java]\
+constructor()

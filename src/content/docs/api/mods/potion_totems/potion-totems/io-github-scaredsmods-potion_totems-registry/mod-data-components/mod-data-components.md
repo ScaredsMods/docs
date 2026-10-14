@@ -1,0 +1,6 @@
+---
+title: "ModDataComponents"
+---
+
+[java]\
+constructor()

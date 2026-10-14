@@ -1,0 +1,6 @@
+---
+title: "ModMenuTypes"
+---
+
+[java]\
+constructor()

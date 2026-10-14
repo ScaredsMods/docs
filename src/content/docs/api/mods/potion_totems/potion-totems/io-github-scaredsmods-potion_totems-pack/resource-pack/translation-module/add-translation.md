@@ -1,0 +1,6 @@
+---
+title: "addTranslation"
+---
+
+[java]\
+open fun [addTranslation](/docs/api/mods/potion_totems/potion-totems/io-github-scaredsmods-potion_totems-pack/resource-pack/translation-module/add-translation/)(name: [String](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html), translation: [String](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html))
