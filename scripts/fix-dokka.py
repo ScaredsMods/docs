@@ -13,9 +13,14 @@ What it does:
   * labels every index page "Overview" in the sidebar
   * renames files/directories to URL-safe lowercase names
   * rewrites relative `.md` links to absolute Starlight URLs
-  * tags code fences with java/kotlin so Starlight syntax-highlights them
+  * flattens the module wrapper folder (-potion-totems/) away
+  * turns Dokka's plain-text signatures into highlighted ```kotlin code blocks
+    (Dokka writes Java declarations in Kotlin-style syntax)
+  * removes the "[java]" source-set labels and Dokka's package-list file
+  * tags other code fences with java/kotlin so Starlight highlights them
 """
 import json
+import html
 import os
 import re
 import sys
@@ -24,6 +29,11 @@ from urllib.parse import unquote
 
 root = Path(sys.argv[1])
 base = sys.argv[2].rstrip("/")
+
+# Signatures become fenced code blocks (syntax highlighted), but code blocks
+# can't contain links, so type names stop being clickable. Set to False to keep
+# Dokka's linked plain-text signatures instead.
+HIGHLIGHT_SIGNATURES = True
 
 LINK = re.compile(r'\]\((?!https?:|#|/|mailto:)([^)\s#]+?)\.md(#[^)\s]*)?\)')
 FENCE_OPEN = re.compile(r'^(\s*)```([\w+-]*)\s*$')
@@ -55,6 +65,10 @@ strip = common[:-1]  # keep the last shared segment as the top node of the tree
 
 
 def map_dirs(dirs):
+    # Drop the module wrapper folder(s) that sit in front of the first package folder.
+    first_pkg = next((i for i, d in enumerate(dirs) if "." in d), None)
+    if first_pkg:
+        dirs = dirs[first_pkg:]
     out = []
     for d in dirs:
         if "." in d:
@@ -91,8 +105,8 @@ def rewrite_links(text: str, old_rel: Path) -> str:
 
 # ---- code fences ------------------------------------------------------------
 def guess_lang(lang: str, code: str) -> str:
-    if lang not in ("", "kotlin", "text", "java"):
-        return lang  # xml, json, bash, ... keep as is
+    if lang and lang != "text":
+        return lang  # already tagged (incl. our signature blocks): keep as is
     is_kotlin = bool(KOTLIN_KW.search(code))
     is_java = bool(JAVA_KW.search(code))
     if is_kotlin and not is_java:
@@ -122,6 +136,44 @@ def fix_fences(text: str) -> str:
     return "\n".join(out)
 
 
+# ---- signatures -------------------------------------------------------------
+LINK_MD = re.compile(r'\[([^\]]*)\]\([^)]*\)')
+SIG_MARK = re.compile(r'^\[\w+\]\\?$')       # "[java]\"
+CELL_MARK = re.compile(r'\[\w+\]<br>')         # "[java]<br>" inside table cells
+
+
+def plain(text: str) -> str:
+    """Markdown with links/entities -> plain source text."""
+    text = LINK_MD.sub(r"\1", text)
+    text = html.unescape(text)
+    return re.sub(r"\\([\\`*_{}\[\]()<>#+!.|-])", r"\1", text)
+
+
+def convert_signatures(text: str) -> str:
+    lines = text.split("\n")
+    out, i = [], 0
+    while i < len(lines):
+        if not SIG_MARK.match(lines[i].strip()):
+            out.append(CELL_MARK.sub("", lines[i]))
+            i += 1
+            continue
+        j, sig = i + 1, []
+        while j < len(lines):  # annotations first, then the declaration line
+            cur = lines[j].strip()
+            j += 1
+            if not cur:
+                continue
+            sig.append(cur)
+            if not cur.startswith("@"):
+                break
+        if HIGHLIGHT_SIGNATURES:
+            out += ["```kotlin", *[plain(l) for l in sig], "```"]
+        else:
+            out += [*sig]
+        i = j
+    return "\n".join(out)
+
+
 # ---- page conversion --------------------------------------------------------
 def convert(path: Path, rel: Path) -> str:
     lines = [l for l in path.read_text(encoding="utf-8").splitlines()
@@ -132,7 +184,8 @@ def convert(path: Path, rel: Path) -> str:
             title = re.sub(r"\\(.)", r"\1", l[2:].strip())  # unescape \< \> \_
             del lines[i]  # Starlight renders the title as the page H1
             break
-    body = fix_fences(rewrite_links("\n".join(lines).strip(), rel))
+    body = rewrite_links("\n".join(lines).strip(), rel)
+    body = fix_fences(convert_signatures(body))
     front = f"title: {json.dumps(title)}\n"
     if rel.name == "index.md":
         front += 'sidebar:\n  label: "Overview"\n'
@@ -146,8 +199,9 @@ for f, rel in zip(files, rels):
         sys.exit(f"Name collision after slugifying: {rel} -> {out}")
     converted[out] = convert(f, rel)
 
-for f in files:
-    f.unlink()
+for f in root.rglob("*"):
+    if f.is_file():
+        f.unlink()  # the .md files (re-written below) and Dokka's package-list
 for d in sorted((p for p in root.rglob("*") if p.is_dir()), reverse=True):
     try:
         d.rmdir()
