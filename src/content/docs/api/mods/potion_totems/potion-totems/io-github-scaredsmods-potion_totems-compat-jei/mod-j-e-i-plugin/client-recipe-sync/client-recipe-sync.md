@@ -1,0 +1,6 @@
+---
+title: "ClientRecipeSync"
+---
+
+[java]\
+constructor()

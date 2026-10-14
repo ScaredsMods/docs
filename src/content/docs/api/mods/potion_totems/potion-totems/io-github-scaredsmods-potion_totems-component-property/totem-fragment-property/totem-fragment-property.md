@@ -1,0 +1,6 @@
+---
+title: "TotemFragmentProperty"
+---
+
+[java]\
+constructor()

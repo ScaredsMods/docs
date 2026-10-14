@@ -1,0 +1,6 @@
+---
+title: "PotionUtils"
+---
+
+[java]\
+constructor()

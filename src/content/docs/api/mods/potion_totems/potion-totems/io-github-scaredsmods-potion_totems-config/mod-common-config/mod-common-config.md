@@ -1,0 +1,6 @@
+---
+title: "ModCommonConfig"
+---
+
+[java]\
+constructor()

@@ -1,0 +1,6 @@
+---
+title: "ModJEIRecipeTypes"
+---
+
+[java]\
+constructor()
