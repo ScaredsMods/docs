@@ -18,5 +18,5 @@ open class DataPack : AbstractPack
 
 | Name | Summary |
 |---|---|
-| [write](/docs/api/mods/potion_totems/potion_totems/pack/data-pack/write/) | open fun [write](/docs/api/mods/potion_totems/potion_totems/pack/data-pack/write/)() |
-| [writePackIcon](/docs/api/mods/potion_totems/potion_totems/pack/data-pack/write-pack-icon/) | open fun [writePackIcon](/docs/api/mods/potion_totems/potion_totems/pack/data-pack/write-pack-icon/)(modId: [String](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html)) |
+| [write](/docs/api/mods/potion_totems/potion_totems/pack/data-pack/write/) | open fun [write](/docs/api/mods/potion_totems/potion_totems/pack/data-pack/write/)()<br>A method that writes **all** data to disk. |
+| [writePackIcon](/docs/api/mods/potion_totems/potion_totems/pack/data-pack/write-pack-icon/) | open fun [writePackIcon](/docs/api/mods/potion_totems/potion_totems/pack/data-pack/write-pack-icon/)(modId: [String](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html))<br>An optional method that does not need to be called, but exists to give authors an option to customise their pack. |

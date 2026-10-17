@@ -20,16 +20,10 @@ open class ResourcePack : AbstractPack
 |---|---|
 | [TranslationModule](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/translation-module/) | open class [TranslationModule](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/translation-module/) |
 
-## Properties
-
-| Name | Summary |
-|---|---|
-| [GSON](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/g-s-o-n/) | val [GSON](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/g-s-o-n/): Gson |
-
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [apply](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/apply/) | open fun [apply](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/apply/)() |
+| [apply](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/apply/) | open fun [apply](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/apply/)()<br>A method that must be called if you want to actually use the resources generated. |
 | [getTranslationModule](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/get-translation-module/) | open fun [getTranslationModule](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/get-translation-module/)(): [ResourcePack.TranslationModule](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/translation-module/) |
-| [write](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/write/) | open fun [write](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/write/)() |
+| [write](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/write/) | open fun [write](/docs/api/mods/potion_totems/potion_totems/pack/resource-pack/write/)()<br>An example implementation of [write](/docs/api/mods/potion_totems/potion_totems/pack/abstract-pack/write/), used for resourcepacks. |
